@@ -2,7 +2,7 @@ name: Automated Commit
 
 on:
   push:
-    branches: [master] # Ensures the workflow triggers on pushes to master
+    branches: [master, main] # Ensures the workflow triggers on pushes to master and main
 
   schedule:
     - cron: '0 */12 * * *' # Executes every 12 hours
