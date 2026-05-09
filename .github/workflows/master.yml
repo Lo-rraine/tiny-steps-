@@ -2,13 +2,12 @@ name: Automated Commit
 
 on:
   push:
-    branches: [master, main] # Ensures the workflow triggers on pushes to master and main
+    branches: [main] # Ensures the workflow triggers on pushes to master and main
 
   schedule:
     - cron: '0 */12 * * *' # Executes every 12 hours
 
   workflow_dispatch: # Allows manual triggering from the GitHub UI
-
 permissions:
   contents: write # Grants permissions to write to the repo
 
@@ -49,3 +48,4 @@ jobs:
         with:
           directory: '.'
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
