@@ -68,10 +68,3 @@ Contributions are welcome:
 1. Open an issue to discuss major changes.
 2. Send Pull Requests with clear descriptions.
 
-## Support
-
-For questions or issues, open an issue in the `Issues` section of the repository.
-
----
-
-Thank you for using Automated-Commit.
