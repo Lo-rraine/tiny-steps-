@@ -53,7 +53,6 @@ Edit `.github/workflows/master.yml` as needed:
 - Change the cron frequency if you need a different interval.
 - If you prefer, change the filename `TIMESTAMP.txt` to another target file.
 
-Security best practice: use the `GITHUB_TOKEN` provided by Actions for automatic pushes; avoid putting personal access tokens in plain text.
 
 ## Common Customizations
 
