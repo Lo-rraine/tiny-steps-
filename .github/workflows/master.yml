@@ -6,7 +6,7 @@ on:
 
   schedule:
     # 18:00, 22:00, 02:00 SAST
-   - cron: "0 16,20,0 * * *"
+     - cron: "0 16,20,0 * * *"
 
     # Once a day at 19:00 SAST
     # - cron: "0 09 * * *"
