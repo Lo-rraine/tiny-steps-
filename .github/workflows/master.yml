@@ -32,9 +32,28 @@ jobs:
           persist-credentials: true # Ensures credentials are available for subsequent steps
           fetch-depth: 0 # Fetches all history for all branches and tags
 
-      - name: Update Timestamp File
+      - name: Fetch Quote and Update Table
         run: |
           current_time=$(date '+%Y-%m-%d %H:%M:%S')
+
+          # Fetch quote from API
+          quote_data=$(curl -s 'https://programming-quotesapi.vercel.app/api/random')
+          author=$(echo "$quote_data" | jq -r '.author // "Unknown"')
+          quote=$(echo "$quote_data" | jq -r '.quote // "No quote available"')
+
+          # Escape pipes and newlines in quote for markdown table
+          quote=$(echo "$quote" | tr '\n' ' ' | sed 's/|/\|/g')
+
+          # Initialize table if it doesn't exist
+          if [ ! -f QUOTES.md ]; then
+            echo "| Timestamp | Author | Quote |" > QUOTES.md
+            echo "|-----------|--------|-------|" >> QUOTES.md
+          fi
+
+          # Append new entry
+          echo "| $current_time | $author | $quote |" >> QUOTES.md
+
+          # Keep TIMESTAMP.txt for backwards compatibility
           echo "Updated on $current_time" > TIMESTAMP.txt
 
       - name: Setup Git Configuration
@@ -47,7 +66,7 @@ jobs:
           commit_messages=("Update: ⏰" "Refresh: 🔄" "Renew: 🌟" "Revise: 📝" "Amend: 🛠" "Adjust: 🔧" "Change: 📈" "Modify: 🖊" "Transform: 🌀" "Revamp: 🌈")
           random_msg=${commit_messages[$RANDOM % ${#commit_messages[@]}]}
 
-          git add TIMESTAMP.txt
+          git add TIMESTAMP.txt QUOTES.md
           git commit -m "$random_msg - $current_time" || echo "No changes to commit."
 
       - name: GitHub Push
