@@ -1,4 +1,4 @@
-# Programming Quotes of the Day
+# Random Quotes of the Day
 
 | Timestamp | Author | Quote |
 |-----------|--------|-------|
