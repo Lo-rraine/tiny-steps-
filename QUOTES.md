@@ -7,3 +7,4 @@
 | 2026-07-13 19:06:34 | Coco Chanel | Guilt is perhaps the most painful companion of death.  |
 | 2026-07-13 19:07:39 | Virginia Woolf | If you do not tell the truth about yourself you cannot tell it about other people.  |
 | 2026-07-13 20:11:34 | Robert Collier | The first principle of success is desire.  |
+| 2026-07-13 20:58:42 | Stephen King | Quiet people have the loudest minds.  |
