@@ -35,40 +35,40 @@ jobs:
         run: |
           current_time=$(date '+%Y-%m-%d %H:%M:%S')
 
-          # Make available to later steps
+          # Make timestamp available to later steps
           echo "CURRENT_TIME=$current_time" >> $GITHUB_ENV
 
-          # Fetch quote
-          quote_data=$(curl -s https://programming-quotesapi.vercel.app/api/random)
+          # Fetch quote from ZenQuotes
+          quote_data=$(curl -s --max-time 10 https://zenquotes.io/api/random)
 
           echo "API Response:"
           echo "$quote_data"
 
-          # Default values
-          author="Unknown"
-          quote="Failed to fetch quote"
+          # Default fallback values
+          author="Grace Hopper"
+          quote="The most dangerous phrase in the language is: we've always done it this way."
 
-          # Only parse if valid JSON
+          # Parse response if valid JSON
           if echo "$quote_data" | jq empty 2>/dev/null; then
-            author=$(echo "$quote_data" | jq -r '.author // "Unknown"')
-
-            # Some quote APIs use .quote, others use .en
-            quote=$(echo "$quote_data" | jq -r '.quote // .en // "No quote available"')
+            author=$(echo "$quote_data" | jq -r '.[0].a // "Grace Hopper"')
+            quote=$(echo "$quote_data" | jq -r '.[0].q // "The most dangerous phrase in the language is: we have always done it this way."')
           fi
 
           # Escape markdown table characters
           quote=$(echo "$quote" | tr '\n' ' ' | sed 's/|/\\|/g')
 
-          # Create table if missing
+          # Create table if it doesn't exist
           if [ ! -f QUOTES.md ]; then
-            echo "| Timestamp | Author | Quote |" > QUOTES.md
+            echo "# Programming Quotes of the Day" > QUOTES.md
+            echo "" >> QUOTES.md
+            echo "| Timestamp | Author | Quote |" >> QUOTES.md
             echo "|-----------|--------|-------|" >> QUOTES.md
           fi
 
-          # Add entry
+          # Append quote
           echo "| $current_time | $author | $quote |" >> QUOTES.md
 
-          # Update timestamp file
+          # Backwards compatibility
           echo "Updated on $current_time" > TIMESTAMP.txt
 
       - name: Setup Git Configuration
