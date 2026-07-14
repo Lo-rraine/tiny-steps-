@@ -10,3 +10,4 @@
 | 2026-07-13 20:58:42 | Stephen King | Quiet people have the loudest minds.  |
 | 2026-07-14 02:41:39 | Publilius Syrus | A Rolling Stone Gathers No Moss.  |
 | 2026-07-14 17:16:40 | Nelson Mandela | It is what we make out of what we have, not what we are given, that separates one person from another.  |
+| 2026-07-14 21:02:15 | Kamal Ravikant | If there's a definition of freedom, I think it's this: living life on your terms.  |
