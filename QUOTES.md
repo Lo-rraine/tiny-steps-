@@ -16,3 +16,4 @@
 | 2026-07-16 02:46:54 | Hans Christian Andersen | Enjoy life. There's plenty of time to be dead.  |
 | 2026-07-16 17:20:06 | J.R.R. Tolkien | Not all those who wander are lost.  |
 | 2026-07-16 20:00:16 | Theodore Roosevelt | When you're at the end of your rope, tie a knot and hold on.  |
+| 2026-07-16 21:02:17 | Johann Wolfgang von Goethe | Knowing is not enough, we must apply. Willing is not enough, we must do.  |
