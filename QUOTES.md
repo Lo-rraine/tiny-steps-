@@ -18,3 +18,4 @@
 | 2026-07-16 20:00:16 | Theodore Roosevelt | When you're at the end of your rope, tie a knot and hold on.  |
 | 2026-07-16 21:02:17 | Johann Wolfgang von Goethe | Knowing is not enough, we must apply. Willing is not enough, we must do.  |
 | 2026-07-17 02:49:27 | Yanni | I'm an optimist by choice not by stupidity.  |
+| 2026-07-17 17:15:11 | Rumi | The quieter you become, the more you are able to hear.  |
