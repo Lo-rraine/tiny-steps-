@@ -1,0 +1,87 @@
+.quote-display {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.quote-display.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text);
+}
+
+.quote-meta {
+  text-align: center;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 16px;
+}
+
+.quote-meta h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  color: var(--text-h);
+}
+
+.update-time {
+  font-size: 12px;
+  color: var(--text);
+  margin: 0;
+}
+
+.quotes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.quote-card {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--code-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quote-time {
+  font-size: 12px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-weight: 600;
+}
+
+.quote-text {
+  font-size: 20px;
+  font-style: italic;
+  color: var(--text-h);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.quote-author {
+  font-size: 14px;
+  color: var(--text);
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  .quote-display {
+    max-width: 100%;
+  }
+
+  .quote-meta h3 {
+    font-size: 20px;
+  }
+
+  .quote-text {
+    font-size: 18px;
+  }
+
+  .quote-card {
+    padding: 16px;
+    gap: 10px;
+  }
+}
