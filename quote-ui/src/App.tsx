@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useQuotes } from './hooks/useQuotes';
 import { Calendar } from './components/Calendar';
 import { QuoteDisplay } from './components/QuoteDisplay';
@@ -8,12 +8,6 @@ function App() {
   const { quotes, datesWithQuotes, lastUpdated, loading, error } = useQuotes();
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
 
-  useEffect(() => {
-    if (quotes.length > 0 && !datesWithQuotes.has(selectedDate)) {
-      const latestDate = quotes[quotes.length - 1].date;
-      setSelectedDate(latestDate);
-    }
-  }, [quotes, selectedDate, datesWithQuotes]);
 
   return (
     <div className="app">

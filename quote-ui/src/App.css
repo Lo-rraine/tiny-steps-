@@ -1,85 +1,102 @@
 .app {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  padding: 40px 32px;
+  gap: 48px;
+  padding: 48px 32px;
   min-height: 100vh;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .header h1 {
-  margin: 0 0 8px;
+  margin: 0 0 12px;
   font-size: 48px;
   color: var(--text-h);
+  font-weight: 600;
 }
 
 .subtitle {
   font-size: 18px;
   color: var(--text);
   margin: 0;
+  font-weight: 400;
 }
 
 .error-banner {
-  padding: 12px 16px;
+  padding: 14px 18px;
   background: #fee;
   border: 1px solid #fcc;
-  border-radius: 6px;
+  border-radius: 8px;
   color: #c00;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  font-size: 14px;
 }
 
 .loading {
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
   font-size: 18px;
   color: var(--text);
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 40px;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
   flex: 1;
+  align-items: start;
 }
 
 .main-content {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 48px;
 }
 
 .footer {
   text-align: center;
-  padding-top: 20px;
+  padding-top: 32px;
   border-top: 1px solid var(--border);
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text);
+  margin-top: auto;
 }
 
 @media (max-width: 1024px) {
   .app {
-    padding: 24px 16px;
-    gap: 32px;
+    padding: 32px 20px;
+    gap: 40px;
   }
 
   .header h1 {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .container {
     grid-template-columns: 1fr;
+    gap: 36px;
+    align-items: stretch;
+  }
+
+  .main-content {
+    align-items: stretch;
+    justify-content: stretch;
   }
 
   .sidebar {
+    position: static;
     width: 100%;
+    gap: 0;
   }
 }
