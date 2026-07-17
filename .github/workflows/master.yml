@@ -33,13 +33,35 @@ jobs:
           fetch-depth: 0 # Fetches all history for all branches and tags
 
       - name: Fetch Quote and Update Table
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           current_time=$(date '+%Y-%m-%d %H:%M:%S')
 
-          # Fetch quote from API
-          quote_data=$(curl -s 'https://programming-quotesapi.vercel.app/api/random')
-          author=$(echo "$quote_data" | jq -r '.author // "Unknown"')
-          quote=$(echo "$quote_data" | jq -r '.quote // "No quote available"')
+          # Prompt for generating motivational quotes for engineers
+          prompt="Generate a single motivational quote for software engineers that:
+          - Is under 20 words
+          - Reflects technical truth and real engineering experiences
+          - Provides emotional validation and encouragement
+          - Sounds like a senior engineer's hard-earned insight
+          - Avoids clichés, motivational fluff, and hustle culture
+          - Topics: debugging, architecture, reliability, learning, technical debt, teamwork, failure, craftsmanship
+          - Is witty and slightly wise
+
+          Return ONLY the quote text, nothing else. No quotation marks."
+
+          # Call OpenRouter API
+          quote_response=$(curl -s https://openrouter.ai/api/v1/chat/completions \
+            -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"model\": \"openai/gpt-4o-mini\",
+              \"messages\": [{\"role\": \"user\", \"content\": \"$prompt\"}],
+              \"max_tokens\": 100
+            }")
+
+          quote=$(echo "$quote_response" | jq -r '.choices[0].message.content // "Unable to generate quote"')
+          author="OpenRouter LLM"
 
           # Escape pipes and newlines in quote for markdown table
           quote=$(echo "$quote" | tr '\n' ' ' | sed 's/|/\|/g')
